@@ -43,7 +43,7 @@ public class GraphService {
         if (label == null || label.isEmpty()){
             return false;
         }
-        if (graph.containsVertex(label)){
+        if (graph.containsVertex(label)){   //add the individual node
             return false;
         }
         graph.addVertex(label);
@@ -56,7 +56,7 @@ public class GraphService {
             return 0;
         }
         int added = 0;
-        for (String s : labels){
+        for (String s : labels){  //add each node from the list
             if (addNode(s)){
                 added++;
             }
