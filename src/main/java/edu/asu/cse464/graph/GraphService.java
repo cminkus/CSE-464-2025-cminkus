@@ -1,13 +1,14 @@
 package edu.asu.cse464.graph;
 
+import guru.nidi.graphviz.engine.Format;
+import guru.nidi.graphviz.engine.Graphviz;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
+import org.jgrapht.nio.dot.DOTExporter;
 import org.jgrapht.nio.dot.DOTImporter;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 
 public class GraphService {
     private final Graph<String, DefaultEdge> graph =
@@ -82,18 +83,51 @@ public class GraphService {
 
 
     public void outputDOTGraph(String path) {
-        //TO DO
+        try (java.io.Writer writer = new java.io.FileWriter(path)) {
+            DOTExporter<String, DefaultEdge> exporter =
+                    new DOTExporter<>();
+            exporter.setVertexIdProvider(v -> v);
+
+            exporter.exportGraph(graph, writer);
+            System.out.println("DOT file created: " + path);
+        } catch (java.io.IOException e) {
+            System.out.println("Error creating DOT file: " + e.getMessage());
+        }
     }
+
 
     public void outputGraphics(String path, String format) {
-        //TO DO
-    }
+        try {
+            String tempDot = "temp.dot";    //create a temporary .dot file for outputting the graphics
+            outputDOTGraph(tempDot);
 
+            //set format to png bc that's what the project wants lol
+            Format fmt = Format.PNG;
+
+            //render the temp .dot file to an image
+            Graphviz.fromFile(new java.io.File(tempDot)).render(fmt).toFile(new java.io.File(path));
+
+            System.out.println("Image created: " + path);   //show that the image was created along with the path of the img
+        } catch (Exception e) {
+            System.out.println("Error creating image: " + e.getMessage());
+        }
+    }
 
     @Override
     public String toString() {
-        return "Graph: |Vertex|=" + graph.vertexSet().size() + ", |Edges|=" + graph.edgeSet().size();
+        StringBuilder result = new StringBuilder("Graph:\n");
+        result.append("Vertices (").append(graph.vertexSet().size()).append("): ").append(graph.vertexSet()).append("\n");
+        result.append("Edges (").append(graph.edgeSet().size()).append("):\n");
+
+        for (String v : graph.vertexSet()) {
+            for (DefaultEdge e : graph.outgoingEdgesOf(v)) {
+                String target = graph.getEdgeTarget(e); //append the vertices and edges
+                result.append("  ").append(v).append(" -> ").append(target).append("\n");
+            }
+        }
+        return result.toString();
     }
+
 
 
 
