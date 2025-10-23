@@ -13,6 +13,7 @@ public class GraphService {
     private final Graph<String, DefaultEdge> graph =
             new DefaultDirectedGraph<>(DefaultEdge.class); //instantiate graph variables
 
+    //TASK 1
     public void parseGraph(String filepath) {
         try {
             File file = new File(filepath);
@@ -39,14 +40,30 @@ public class GraphService {
     }
 
     public boolean addNode(String label) {
-        //TO DO
+        if (label == null || label.isEmpty()){
+            return false;
+        }
+        if (graph.containsVertex(label)){
+            return false;
+        }
+        graph.addVertex(label);
         return true;
     }
 
+
     public int addNodes(String[] labels) {
-        //TO DO
-        return 0;
+        if (labels == null){
+            return 0;
+        }
+        int added = 0;
+        for (String s : labels){
+            if (addNode(s)){
+                added++;
+            }
+        }
+        return added;
     }
+
     public boolean addEdge(String src, String dst) {
        //TO DO
         return true;
