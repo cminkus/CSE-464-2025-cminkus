@@ -65,9 +65,21 @@ public class GraphService {
     }
 
     public boolean addEdge(String src, String dst) {
-       //TO DO
+        if (src == null || dst == null || src.isEmpty() || dst.isEmpty()) {
+            return false;   //check for null/empty
+        }
+
+        addNode(src);
+        addNode(dst);   //make sure the endpoints exist or else that would be bad :(
+
+        //check for dupes
+        if (graph.containsEdge(src, dst)) {
+            return false;
+        }
+        graph.addEdge(src, dst); //if everything is all good add the edge
         return true;
     }
+
 
     public void outputDOTGraph(String path) {
         //TO DO
