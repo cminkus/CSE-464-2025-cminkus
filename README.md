@@ -77,6 +77,7 @@ Edges (2):
   A -> B
   B -> C
 
+
 Screenshot of Expected Output:
 <img width="295" height="213" alt="image" src="https://github.com/user-attachments/assets/0d5655e8-3d6a-40a8-9d64-eff12c24099d" />
 
