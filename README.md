@@ -100,5 +100,8 @@ Expected Result:
 Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
 BUILD SUCCESS
 
+Screenshot showing BUILD SUCCESS after running mvn package:
+<img width="859" height="227" alt="image" src="https://github.com/user-attachments/assets/faa2a32c-282d-4b82-9559-2b4b35e15f24" />
+
 
 
