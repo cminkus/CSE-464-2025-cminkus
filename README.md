@@ -1,4 +1,4 @@
-<img width="705" height="301" alt="image" src="https://github.com/user-attachments/assets/c77e1c6f-41e1-4885-b373-b8bc0978748c" />CSE 464 – Project Part 1
+CSE 464 – Project Part 1
 
 Student: Cyler Minkus
 ASU Email: cminkus@asu.edu
