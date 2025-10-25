@@ -48,6 +48,9 @@ Edges (3):
 Screenshot of Expected Output:
 <img width="705" height="301" alt="image" src="https://github.com/user-attachments/assets/b458eb00-fd51-48da-98fa-968725700ac6" />
 
+Link to Commit:
+https://github.com/cminkus/CSE-464-2025-cminkus/commit/599304c98e3b7c10211c4217e9a14a40ee71ae87
+
 Feature 2: Add Nodes
 Methods: addNode(String label), addNodes(String[] labels)
 Description: Adds one or multiple nodes and rejects duplicate nodes.
@@ -62,6 +65,9 @@ Edges (0):
 
 Screenshot of Expected Output:
 <img width="259" height="160" alt="image" src="https://github.com/user-attachments/assets/69b4a73a-3be6-4ef6-9dd4-1b4aeebe5b09" />
+
+Link to Commit:
+https://github.com/cminkus/CSE-464-2025-cminkus/commit/40cd06a997f0d34889dea9f6ec48543725e48cd7
 
 Feature 3: Add Edges
 Method: addEdge(String src, String dst)
@@ -81,6 +87,9 @@ Edges (2):
 Screenshot of Expected Output:
 <img width="295" height="213" alt="image" src="https://github.com/user-attachments/assets/0d5655e8-3d6a-40a8-9d64-eff12c24099d" />
 
+Link to Commit:
+https://github.com/cminkus/CSE-464-2025-cminkus/commit/3d43a39611a9863a4bd29a22e2cede672120c7ec
+
 Feature 4: Output Graph
 Methods: outputDOTGraph(String path), outputGraphics(String path, String format)
 Description: Creates DOT file and PNG image of the graph
@@ -89,8 +98,13 @@ Example Output:
 DOT file created: output.dot
 DOT file created: temp.dot
 
+
 Screenshot of Expected Output:
 <img width="304" height="72" alt="image" src="https://github.com/user-attachments/assets/ec3b025d-9f87-43af-a4c7-00d39a32bb16" />
+
+Link to Commit:
+https://github.com/cminkus/CSE-464-2025-cminkus/commit/fe09c46a61dd1a5742779e8546e1110ad003cbb2
+
 -----------------------------------------------------------------------------------------------------------------------------
 Unit Tests:
 Each feature has a dedicated test class in "src/test/java/edu/asu/cse464/graph/"
