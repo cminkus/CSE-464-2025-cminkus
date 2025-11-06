@@ -116,6 +116,9 @@ BUILD SUCCESS
 
 Screenshot showing BUILD SUCCESS after running mvn package:
 <img width="859" height="227" alt="image" src="https://github.com/user-attachments/assets/faa2a32c-282d-4b82-9559-2b4b35e15f24" />
+------------------------------------------------------------------------------------------------------------------------------
+Continuous Integration (CI):
 
+[![Maven CI](https://github.com/cminkus/CSE-464-2025-cminkus/actions/workflows/maven.yml/badge.svg)](https://github.com/cminkus/CSE-464-2025-cminkus/actions/workflows/maven.yml)
 
 
