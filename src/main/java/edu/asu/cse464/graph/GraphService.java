@@ -171,5 +171,48 @@ public class GraphService {
         graph.removeEdge(edge);
     }
 
+//DFS for Part 2
+public Path GraphSearch(String src, String dst) {
+    if (src == null || dst == null) {
+        return null;
+    }
+    if (!graph.containsVertex(src) || !graph.containsVertex(dst)) {
+        return null;
+    }
 
+    java.util.Set<String> visited = new java.util.HashSet<>();
+    java.util.List<String> path = new java.util.ArrayList<>();
+
+    boolean found = dfsVisit(src, dst, visited, path);
+    if (found) {
+        return new Path(path);
+    }
+    return null;
+}
+
+    private boolean dfsVisit(String current,
+                             String target,
+                             java.util.Set<String> visited,
+                             java.util.List<String> path) {
+        visited.add(current);
+        path.add(current);
+
+        if (current.equals(target)) {
+            return true;
+        }
+
+        for (org.jgrapht.graph.DefaultEdge e : graph.outgoingEdgesOf(current)) {
+            String next = graph.getEdgeTarget(e);
+            if (!visited.contains(next)) {
+                boolean ok = dfsVisit(next, target, visited, path);
+                if (ok) {
+                    return true;
+                }
+            }
+        }
+
+        // backtrack
+        path.remove(path.size() - 1);
+        return false;
+    }
 }
