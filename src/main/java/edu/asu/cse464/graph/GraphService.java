@@ -128,7 +128,48 @@ public class GraphService {
         return result.toString();
     }
 
+//STUFF FOR PROJECT PART 2
 
+    public void removeNode(String label) {
+        if (label == null){
+            throw new IllegalArgumentException("label is null");
+        }
+        boolean flag = graph.removeVertex(label);
+        if (!flag) {
+            throw new java.util.NoSuchElementException("Node not found: " + label);
+        }
+    }
+
+    public void removeNodes(String[] labels) {
+        if (labels == null){
+            throw new IllegalArgumentException("labels is null");
+        }
+        for (String label : labels) {
+            if (label == null || !graph.containsVertex(label)) {
+                throw new java.util.NoSuchElementException("Node not found: " + label);
+            }
+        }
+        for (String label : labels) {
+            graph.removeVertex(label);
+        }
+    }
+
+    public void removeEdge(String srcLabel, String dstLabel) {
+        if (srcLabel == null || dstLabel == null) {
+            throw new IllegalArgumentException("src/dst is null");
+        }
+        if (!graph.containsVertex(srcLabel)) {
+            throw new java.util.NoSuchElementException("Source node not found: " + srcLabel);
+        }
+        if (!graph.containsVertex(dstLabel)) {
+            throw new java.util.NoSuchElementException("Destination node not found: " + dstLabel);
+        }
+        var edge = graph.getEdge(srcLabel, dstLabel);
+        if (edge == null) {
+            throw new java.util.NoSuchElementException("Edge not found: " + srcLabel + " -> " + dstLabel);
+        }
+        graph.removeEdge(edge);
+    }
 
 
 }
