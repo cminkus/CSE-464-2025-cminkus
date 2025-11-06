@@ -171,5 +171,43 @@ public class GraphService {
         graph.removeEdge(edge);
     }
 
+//BFS for Part 2
+
+    public Path GraphSearch(String src, String dst) {
+        if (src == null || dst == null){
+            return null;
+        }
+        if (!graph.containsVertex(src) || !graph.containsVertex(dst)){
+            return null;
+        }
+
+        //using queue and hashmap for the bfs
+        java.util.Queue<String> q = new java.util.ArrayDeque<>();
+        java.util.Map<String, String> parent = new java.util.HashMap<>();
+
+        q.add(src);
+        parent.put(src, null);
+
+        while (!q.isEmpty()) {
+            String u = q.remove();
+            if (u.equals(dst)) {
+                java.util.List<String> rev = new java.util.ArrayList<>();
+                for (String cur = dst; cur != null; cur = parent.get(cur)) {
+                    rev.add(cur);
+                }
+                java.util.Collections.reverse(rev);
+                return new Path(rev);
+            }
+            for (var e : graph.outgoingEdgesOf(u)) {
+                String v = graph.getEdgeTarget(e);
+                if (!parent.containsKey(v)) {
+                    parent.put(v, u);
+                    q.add(v);
+                }
+            }
+        }
+        return null;
+    }
+
 
 }
