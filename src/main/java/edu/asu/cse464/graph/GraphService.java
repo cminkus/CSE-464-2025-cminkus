@@ -183,17 +183,17 @@ public Path GraphSearch(String src, String dst) {
     java.util.Set<String> visited = new java.util.HashSet<>();
     java.util.List<String> path = new java.util.ArrayList<>();
 
-    boolean found = dfsVisit(src, dst, visited, path);
+    boolean found = dfs(src, dst, visited, path);
     if (found) {
         return new Path(path);
     }
     return null;
 }
 
-    private boolean dfsVisit(String current,
-                             String target,
-                             java.util.Set<String> visited,
-                             java.util.List<String> path) {
+    private boolean dfs(String current,
+                        String target,
+                        java.util.Set<String> visited,
+                        java.util.List<String> path) {
         visited.add(current);
         path.add(current);
 
@@ -204,7 +204,7 @@ public Path GraphSearch(String src, String dst) {
         for (org.jgrapht.graph.DefaultEdge e : graph.outgoingEdgesOf(current)) {
             String next = graph.getEdgeTarget(e);
             if (!visited.contains(next)) {
-                boolean ok = dfsVisit(next, target, visited, path);
+                boolean ok = dfs(next, target, visited, path);
                 if (ok) {
                     return true;
                 }
