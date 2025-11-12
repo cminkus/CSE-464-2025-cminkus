@@ -120,5 +120,5 @@ Screenshot showing BUILD SUCCESS after running mvn package:
 Continuous Integration (CI):
 
 [![Maven CI](https://github.com/cminkus/CSE-464-2025-cminkus/actions/workflows/maven.yml/badge.svg)](https://github.com/cminkus/CSE-464-2025-cminkus/actions/workflows/maven.yml)
-
+------------------------------------------------------------------------------------------------------------------------------
 
