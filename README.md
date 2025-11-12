@@ -147,3 +147,5 @@ Feature 7 (DFS) Expected Output: <img width="883" height="275" alt="image" src="
 
 All Tests Pass running mvn package: <img width="1503" height="388" alt="image" src="https://github.com/user-attachments/assets/2bf1c748-ab7a-4347-8ff6-71bcb8c3a8a1" />
 
+Continuous Integration: <img width="1382" height="960" alt="image" src="https://github.com/user-attachments/assets/26eaa291-dcff-43d5-8ea8-0370c968cb1d" />
+
