@@ -38,7 +38,7 @@ public class Feature4Test {
         gs.addEdge("B", "C");
 
         String pngPath = "target/test-out/graph.png";   //test path for png
-        gs.outputGraphics(pngPath, "png");
+        gs.outputGraphics(pngPath);
 
         File img = new File(pngPath);
         assertTrue(img.exists(), "PNG file should be created");

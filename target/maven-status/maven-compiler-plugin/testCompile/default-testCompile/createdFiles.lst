@@ -4,4 +4,5 @@ edu\asu\cse464\graph\Feature4Test.class
 edu\asu\cse464\graph\MainTest.class
 edu\asu\cse464\graph\Feature1Test.class
 edu\asu\cse464\graph\RemoveTest.class
+edu\asu\cse464\graph\DFSTest.class
 edu\asu\cse464\graph\Feature3Test.class

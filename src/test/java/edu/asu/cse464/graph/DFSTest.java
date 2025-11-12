@@ -3,32 +3,29 @@ package edu.asu.cse464.graph;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BFSTest {
-
+public class DFSTest {
     @Test
-    void bfs_finds_path_when_reachable() {
+    void reachable() {
         GraphService g = new GraphService();
 
         g.addNodes(new String[]{"A","B","C","D"});
         g.addEdge("A","B");
         g.addEdge("B","C");
         g.addEdge("A","D");
-        g.addEdge("D","C");
 
-        Path p = g.GraphSearch("A", "C", Algorithm.BFS);  //BFS version on this branch
-
+        Path p = g.GraphSearch("A", "C", Algorithm.DFS);
         assertNotNull(p);
         assertEquals("A", p.nodes().get(0));
         assertEquals("C", p.nodes().get(p.nodes().size() - 1));
-        assertEquals("A -> B -> C", p.toString());
     }
 
     @Test
-    void bfs_returns_null_when_unreachable() {
+    void unreachable() {
         GraphService g = new GraphService();
         g.addNodes(new String[]{"A","B","C"});
         g.addEdge("A","B");
-        Path p = g.GraphSearch("B", "A", Algorithm.BFS);
+
+        Path p = g.GraphSearch("B", "A", Algorithm.DFS);
         assertNull(p);
     }
 }

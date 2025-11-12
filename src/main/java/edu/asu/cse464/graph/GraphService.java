@@ -96,7 +96,7 @@ public class GraphService {
     }
 
 
-    public void outputGraphics(String path, String format) {
+    public void outputGraphics(String path) {
         try {
             String tempDot = "temp.dot";    //create a temporary .dot file for outputting the graphics
             outputDOTGraph(tempDot);
@@ -171,17 +171,31 @@ public class GraphService {
         graph.removeEdge(edge);
     }
 
-//BFS for Part 2
-
-    public Path GraphSearch(String src, String dst) {
-        if (src == null || dst == null){
-            return null;
-        }
-        if (!graph.containsVertex(src) || !graph.containsVertex(dst)){
-            return null;
+    //PART 5: Complete GraphSearch with Algorithm parameter added!  yay!!!!!!!!!!!!!!!!!!!!!!!
+    public Path GraphSearch(String src, String dst, Algorithm algo) {
+        if (algo == null) {
+            throw new IllegalArgumentException("Algorithm cannot be null");
         }
 
-        //using queue and hashmap for the bfs
+        if (algo == Algorithm.BFS) {
+            return bfsSearch(src, dst);
+        }
+
+        if (algo == Algorithm.DFS) {
+            return dfsSearch(src, dst);
+        }
+
+        throw new IllegalArgumentException("Unknown algorithm: " + algo);
+    }
+
+    private Path bfsSearch(String src, String dst) {
+        if (src == null || dst == null) {
+            return null;
+        }
+        if (!graph.containsVertex(src) || !graph.containsVertex(dst)) {
+            return null;
+        }
+
         java.util.Queue<String> q = new java.util.ArrayDeque<>();
         java.util.Map<String, String> parent = new java.util.HashMap<>();
 
@@ -192,13 +206,15 @@ public class GraphService {
             String u = q.remove();
             if (u.equals(dst)) {
                 java.util.List<String> rev = new java.util.ArrayList<>();
-                for (String cur = dst; cur != null; cur = parent.get(cur)) {
+                String cur = dst;
+                while (cur != null) {
                     rev.add(cur);
+                    cur = parent.get(cur);
                 }
                 java.util.Collections.reverse(rev);
                 return new Path(rev);
             }
-            for (var e : graph.outgoingEdgesOf(u)) {
+            for (org.jgrapht.graph.DefaultEdge e : graph.outgoingEdgesOf(u)) {
                 String v = graph.getEdgeTarget(e);
                 if (!parent.containsKey(v)) {
                     parent.put(v, u);
@@ -209,5 +225,48 @@ public class GraphService {
         return null;
     }
 
+    private Path dfsSearch(String src, String dst) {
+        if (src == null || dst == null) {
+            return null;
+        }
+        if (!graph.containsVertex(src) || !graph.containsVertex(dst)) {
+            return null;
+        }
+
+        java.util.Set<String> visited = new java.util.HashSet<>();
+        java.util.List<String> path = new java.util.ArrayList<>();
+
+        boolean found = dfsVisit(src, dst, visited, path);
+        if (found) {
+            return new Path(path);
+        }
+        return null;
+    }
+
+    private boolean dfsVisit(String current,
+                             String target,
+                             java.util.Set<String> visited,
+                             java.util.List<String> path) {
+        visited.add(current);
+        path.add(current);
+
+        if (current.equals(target)) {
+            return true;
+        }
+
+        for (org.jgrapht.graph.DefaultEdge e : graph.outgoingEdgesOf(current)) {
+            String next = graph.getEdgeTarget(e);
+            if (!visited.contains(next)) {
+                boolean ok = dfsVisit(next, target, visited, path);
+                if (ok) {
+                    return true;
+                }
+            }
+        }
+
+        // backtrack
+        path.remove(path.size() - 1);
+        return false;
+    }
 
 }

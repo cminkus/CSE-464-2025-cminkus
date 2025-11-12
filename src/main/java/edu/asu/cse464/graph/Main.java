@@ -32,7 +32,7 @@ public class Main {
         f4.addEdge("A", "B");
         f4.addEdge("B", "C");
         f4.outputDOTGraph("output.dot");
-        f4.outputGraphics("output.png", "png");
+        f4.outputGraphics("output.png");
         System.out.println("Wrote output.dot and output.png");
     }
 }
