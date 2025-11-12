@@ -127,7 +127,7 @@ Branch List:
 <img width="765" height="121" alt="image" src="https://github.com/user-attachments/assets/b58531bb-ae21-4a4b-bb15-92db03c092c1" />
 
 ------------------------------------------------------------------------------------------------------------------------------
-Links to Commits:
+Links to Commits
 -Remove APIs and Tests: https://github.com/cminkus/CSE-464-2025-cminkus/commit/a7908b2e114dc0d40618c380a9db1b2ba833d105
 -Continuous Integration: https://github.com/cminkus/CSE-464-2025-cminkus/commit/120e294e7c46bb72a7e9b893cd3e26ff5a30e915
 -BFS Branch and GraphService with Test: https://github.com/cminkus/CSE-464-2025-cminkus/commit/a65217cfd6e5757c33537ed46509b13e696b1a99
@@ -135,6 +135,7 @@ Links to Commits:
 -Merge BFS into Main: https://github.com/cminkus/CSE-464-2025-cminkus/commit/a65217cfd6e5757c33537ed46509b13e696b1a99 (Note that this says "added bfs tests," it should mention the merge happening)
 -Merge DFS into Main with Algorithm enum/parameter: https://github.com/cminkus/CSE-464-2025-cminkus/commit/8c1a459e48d4265ecc13ee371c0d92bf3c8cff45
 -Final code: https://github.com/cminkus/CSE-464-2025-cminkus/commit/3ebb47f38cff1f55514602690a5b2cdbba8b831d
+-Actions Page with CI: https://github.com/cminkus/CSE-464-2025-cminkus/actions
 ------------------------------------------------------------------------------------------------------------------------------
 Screenshots:
 Feature 5 (Removing Nodes/Edges) Expected Output: 
@@ -149,3 +150,8 @@ All Tests Pass running mvn package: <img width="1503" height="388" alt="image" s
 
 Continuous Integration: <img width="1382" height="960" alt="image" src="https://github.com/user-attachments/assets/26eaa291-dcff-43d5-8ea8-0370c968cb1d" />
 
+Main Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/main
+
+BFS Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/bfs
+
+DFS Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/dfs
