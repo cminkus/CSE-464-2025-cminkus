@@ -9,6 +9,7 @@ import org.jgrapht.nio.dot.DOTExporter;
 import org.jgrapht.nio.dot.DOTImporter;
 
 import java.io.*;
+import java.util.NoSuchElementException;
 
 public class GraphService {
     private final Graph<String, DefaultEdge> graph =
@@ -134,10 +135,8 @@ public class GraphService {
         if (label == null){
             throw new IllegalArgumentException("label is null");
         }
-        boolean flag = graph.removeVertex(label);
-        if (!flag) {
-            throw new java.util.NoSuchElementException("Node not found: " + label);
-        }
+        validateNodeExists(label);
+        graph.removeVertex(label);
     }
 
     public void removeNodes(String[] labels) {
@@ -148,6 +147,7 @@ public class GraphService {
             if (label == null || !graph.containsVertex(label)) {
                 throw new java.util.NoSuchElementException("Node not found: " + label);
             }
+            validateNodeExists(label);
         }
         for (String label : labels) {
             graph.removeVertex(label);
@@ -158,12 +158,9 @@ public class GraphService {
         if (srcLabel == null || dstLabel == null) {
             throw new IllegalArgumentException("src/dst is null");
         }
-        if (!graph.containsVertex(srcLabel)) {
-            throw new java.util.NoSuchElementException("Source node not found: " + srcLabel);
-        }
-        if (!graph.containsVertex(dstLabel)) {
-            throw new java.util.NoSuchElementException("Destination node not found: " + dstLabel);
-        }
+        validateNodeExists(srcLabel);
+        validateNodeExists(dstLabel);
+
         var edge = graph.getEdge(srcLabel, dstLabel);
         if (edge == null) {
             throw new java.util.NoSuchElementException("Edge not found: " + srcLabel + " -> " + dstLabel);
@@ -268,5 +265,13 @@ public class GraphService {
         path.remove(path.size() - 1);
         return false;
     }
+
+    //helper function to check if a node exists
+    private void validateNodeExists(String label) {
+        if (!graph.containsVertex(label)) {
+            throw new NoSuchElementException("Node not found: " + label);
+        }
+    }
+
 
 }
