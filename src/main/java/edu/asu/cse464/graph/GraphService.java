@@ -17,29 +17,27 @@ public class GraphService {
 
     //TASK 1
     public void parseGraph(String filepath) {
-        try {
-            File file = new File(filepath);
-            if (!file.exists()) {
-                System.out.println("File not found: " + filepath); //check for path crodie
-                return;
-            }
+        File file = new File(filepath);
+        if (!file.exists()) {
+            System.out.println("File not found: " + filepath);
+            return;
+        }
 
-            DOTImporter<String, DefaultEdge> importer = new DOTImporter<>(); //make the dot importer from the graph dependency thank u internet
-            importer.setVertexFactory(label -> label); //label is vertex id
+        DOTImporter<String, DefaultEdge> importer = new DOTImporter<>();
+        importer.setVertexFactory(label -> label);
+        //use try with resources to make everything run cleaner and safer (refactor 4):
+        try (FileReader fr = new FileReader(file);
+             BufferedReader br = new BufferedReader(fr)) {
 
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr); //readers!
-
-            importer.importGraph(graph, br); //import the graph and then close the files after!
-
-            br.close();
-            fr.close();
-
+            importer.importGraph(graph, br);
             System.out.println("Graph parsed successfully!");
+        } catch (IOException e) {
+            System.out.println("Error reading graph file: " + e.getMessage());
         } catch (Exception e) {
-            System.out.println("Error reading graph: " + e.getMessage());
+            System.out.println("Error parsing graph: " + e.getMessage());
         }
     }
+
 
     public boolean addNode(String label) {
         if (label == null || label.isEmpty()){
@@ -140,19 +138,20 @@ public class GraphService {
     }
 
     public void removeNodes(String[] labels) {
-        if (labels == null){
+        if (labels == null) {
             throw new IllegalArgumentException("labels is null");
         }
         for (String label : labels) {
-            if (label == null || !graph.containsVertex(label)) {
-                throw new java.util.NoSuchElementException("Node not found: " + label);
+            if (label == null) {
+                throw new IllegalArgumentException("label is null");
             }
-            validateNodeExists(label);
+            validateNodeExists(label);  // single, centralized check
         }
         for (String label : labels) {
             graph.removeVertex(label);
         }
     }
+
 
     public void removeEdge(String srcLabel, String dstLabel) {
         if (srcLabel == null || dstLabel == null) {
