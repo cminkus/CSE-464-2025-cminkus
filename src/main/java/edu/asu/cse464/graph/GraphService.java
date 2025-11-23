@@ -186,10 +186,7 @@ public class GraphService {
     }
 
     private Path bfsSearch(String src, String dst) {
-        if (src == null || dst == null) {
-            return null;
-        }
-        if (!graph.containsVertex(src) || !graph.containsVertex(dst)) {
+        if (!canSearch(src, dst)) {
             return null;
         }
 
@@ -216,10 +213,7 @@ public class GraphService {
     }
 
     private Path dfsSearch(String src, String dst) {
-        if (src == null || dst == null) {
-            return null;
-        }
-        if (!graph.containsVertex(src) || !graph.containsVertex(dst)) {
+        if (!canSearch(src, dst)) {
             return null;
         }
 
@@ -278,5 +272,12 @@ public class GraphService {
         return new Path(rev);
     }
 
+    //helper function to handle precondition logic for bfs and dfs (refactor 3):
+    private boolean canSearch(String src, String dst) {
+        if (src == null || dst == null) {
+            return false;
+        }
+        return graph.containsVertex(src) && graph.containsVertex(dst);
+    }
 
 }
