@@ -202,14 +202,7 @@ public class GraphService {
         while (!q.isEmpty()) {
             String u = q.remove();
             if (u.equals(dst)) {
-                java.util.List<String> rev = new java.util.ArrayList<>();
-                String cur = dst;
-                while (cur != null) {
-                    rev.add(cur);
-                    cur = parent.get(cur);
-                }
-                java.util.Collections.reverse(rev);
-                return new Path(rev);
+                return buildPath(parent, dst);
             }
             for (org.jgrapht.graph.DefaultEdge e : graph.outgoingEdgesOf(u)) {
                 String v = graph.getEdgeTarget(e);
@@ -266,11 +259,23 @@ public class GraphService {
         return false;
     }
 
-    //helper function to check if a node exists
+    //helper function to check if a node exists (refactor 1):
     private void validateNodeExists(String label) {
         if (!graph.containsVertex(label)) {
             throw new NoSuchElementException("Node not found: " + label);
         }
+    }
+
+    //helper function to build the path for bfs (refactor 2):
+    private Path buildPath(java.util.Map<String, String> parent, String dst) {
+        java.util.List<String> rev = new java.util.ArrayList<>();
+        String cur = dst;
+        while (cur != null) {
+            rev.add(cur);
+            cur = parent.get(cur);
+        }
+        java.util.Collections.reverse(rev);
+        return new Path(rev);
     }
 
 
