@@ -173,83 +173,13 @@ public class GraphService {
             throw new IllegalArgumentException("Algorithm cannot be null");
         }
 
-        if (algo == Algorithm.BFS) {
-            return bfsSearch(src, dst);
-        }
+        //template method (task 2):
+        SearchTemplate searcher = switch (algo) {
+            case BFS -> new BFSSearch(graph);
+            case DFS -> new DFSSearch(graph);
+        };
 
-        if (algo == Algorithm.DFS) {
-            return dfsSearch(src, dst);
-        }
-
-        throw new IllegalArgumentException("Unknown algorithm: " + algo);
-    }
-
-    private Path bfsSearch(String src, String dst) {
-        if (!canSearch(src, dst)) {
-            return null;
-        }
-
-        java.util.Queue<String> q = new java.util.ArrayDeque<>();
-        java.util.Map<String, String> parent = new java.util.HashMap<>();
-
-        q.add(src);
-        parent.put(src, null);
-
-        while (!q.isEmpty()) {
-            String u = q.remove();
-            if (u.equals(dst)) {
-                return buildPath(parent, dst);
-            }
-            for (org.jgrapht.graph.DefaultEdge e : graph.outgoingEdgesOf(u)) {
-                String v = graph.getEdgeTarget(e);
-                if (!parent.containsKey(v)) {
-                    parent.put(v, u);
-                    q.add(v);
-                }
-            }
-        }
-        return null;
-    }
-
-    private Path dfsSearch(String src, String dst) {
-        if (!canSearch(src, dst)) {
-            return null;
-        }
-
-        java.util.Set<String> visited = new java.util.HashSet<>();
-        java.util.List<String> path = new java.util.ArrayList<>();
-
-        boolean found = dfsVisit(src, dst, visited, path);
-        if (found) {
-            return new Path(path);
-        }
-        return null;
-    }
-
-    private boolean dfsVisit(String current,
-                             String target,
-                             java.util.Set<String> visited,
-                             java.util.List<String> path) {
-        visited.add(current);
-        path.add(current);
-
-        if (current.equals(target)) {
-            return true;
-        }
-
-        for (org.jgrapht.graph.DefaultEdge e : graph.outgoingEdgesOf(current)) {
-            String next = graph.getEdgeTarget(e);
-            if (!visited.contains(next)) {
-                boolean ok = dfsVisit(next, target, visited, path);
-                if (ok) {
-                    return true;
-                }
-            }
-        }
-
-        // backtrack
-        path.remove(path.size() - 1);
-        return false;
+        return searcher.search(src, dst);
     }
 
     //helper function to check if a node exists (refactor 1):
@@ -259,7 +189,7 @@ public class GraphService {
         }
     }
 
-    //helper function to build the path for bfs (refactor 2):
+    /*helper function to build the path for bfs (refactor 2):
     private Path buildPath(java.util.Map<String, String> parent, String dst) {
         java.util.List<String> rev = new java.util.ArrayList<>();
         String cur = dst;
@@ -269,14 +199,14 @@ public class GraphService {
         }
         java.util.Collections.reverse(rev);
         return new Path(rev);
-    }
+    }*/
 
-    //helper function to handle precondition logic for bfs and dfs (refactor 3):
+    /*helper function to handle precondition logic for bfs and dfs (refactor 3):
     private boolean canSearch(String src, String dst) {
         if (src == null || dst == null) {
             return false;
         }
         return graph.containsVertex(src) && graph.containsVertex(dst);
-    }
+    }*/
 
 }
