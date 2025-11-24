@@ -4,9 +4,6 @@ import org.jgrapht.graph.DefaultEdge;
 
 import java.util.*;
 
-/**
- * DFS implementation using the SearchTemplate.
- */
 public class DFSSearch extends SearchTemplate {
 
     public DFSSearch(org.jgrapht.Graph<String, DefaultEdge> graph) {

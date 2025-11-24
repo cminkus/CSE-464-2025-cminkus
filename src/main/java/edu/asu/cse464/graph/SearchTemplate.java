@@ -5,7 +5,7 @@ import org.jgrapht.graph.DefaultEdge;
 
 import java.util.*;
 
-public abstract class SearchTemplate{
+public abstract class SearchTemplate implements SearchStrategy{
 
     protected final Graph<String, DefaultEdge> graph;
 

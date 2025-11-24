@@ -173,14 +173,14 @@ public class GraphService {
             throw new IllegalArgumentException("Algorithm cannot be null");
         }
 
-        //template method (task 2):
-        SearchTemplate searcher = switch (algo) {
+        SearchStrategy strategy = switch (algo) {
             case BFS -> new BFSSearch(graph);
             case DFS -> new DFSSearch(graph);
         };
 
-        return searcher.search(src, dst);
+        return strategy.search(src, dst);
     }
+
 
     //helper function to check if a node exists (refactor 1):
     private void validateNodeExists(String label) {
