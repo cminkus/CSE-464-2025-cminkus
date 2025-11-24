@@ -34,5 +34,27 @@ public class Main {
         f4.outputDOTGraph("output.dot");
         f4.outputGraphics("output.png");
         System.out.println("Wrote output.dot and output.png");
+
+        //RANDOM WALK TESTS
+        System.out.println("=== Feature 8: RANDOM WALK search ===");
+        GraphService rwGraph = new GraphService();
+        rwGraph.addNodes(new String[]{"A", "B", "C", "D", "E"});
+        rwGraph.addEdge("A", "B");
+        rwGraph.addEdge("A", "E");
+        rwGraph.addEdge("E", "G");
+        rwGraph.addEdge("G", "H");
+        rwGraph.addEdge("B", "C");
+        rwGraph.addEdge("C", "D");
+
+        //run random walk several times
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("Random Walk attempt #" + i);
+            Path p = rwGraph.GraphSearch("A", "C", Algorithm.RANDOM);
+            System.out.println(p);
+        }
+
     }
+
+
+
 }

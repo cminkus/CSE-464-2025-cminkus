@@ -1,0 +1,6 @@
+Graph:
+Vertices (3): [a, b, c]
+Edges (3):
+  a -> b
+  b -> c
+  c -> a

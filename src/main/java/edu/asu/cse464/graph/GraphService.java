@@ -176,6 +176,7 @@ public class GraphService {
         SearchStrategy strategy = switch (algo) {
             case BFS -> new BFSSearch(graph);
             case DFS -> new DFSSearch(graph);
+            case RANDOM -> new RandomWalkSearch(graph);
         };
 
         return strategy.search(src, dst);
