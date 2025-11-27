@@ -13,34 +13,45 @@ public class RandomWalkSearch extends SearchTemplate {
     }
 
     @Override
-    protected boolean performSearch(String src, String dst, Set<String> visited, Map<String, String> parent) {
+    protected boolean performSearch(String src, String dst,
+                                    Set<String> visited,
+                                    Map<String, String> parent) {
+
         String current = src;
+        visited.add(current);
+        parent.put(src, null); //make sure that the root exists in parent map
+
+        java.util.List<String> pathSoFar = new java.util.ArrayList<>();
+        pathSoFar.add(current);
 
         while (true) {
-            //if target found
+            System.out.println("visiting " + new Path(pathSoFar));
+
             if (current.equals(dst)) {
                 return true;
             }
 
-            //mark it as visited
-            visited.add(current);
-
-            //get neighbors of current node
-            List<String> neighbors = getNeighbors(current);
-
+            java.util.List<String> neighbors = getNeighbors(current);
             if (neighbors.isEmpty()) {
+                //dead end so ret false
                 return false;
             }
 
-            //choose a random neighbor
             String next = neighbors.get(rand.nextInt(neighbors.size()));
-            if (!parent.containsKey(next)) {
-                parent.put(next, current);
-            }
 
-            current = next; //set curr to next
+            //if this is a new node in the tree, record its parent and extend path
+            if (!visited.contains(next)) {
+                visited.add(next);
+                parent.put(next, current);
+                pathSoFar.add(next);
+            } else {
+                pathSoFar.add(next);
+            }
+            //move on lol
+            current = next;
         }
     }
+
 
     private List<String> getNeighbors(String node) {
         List<String> list = new ArrayList<>();

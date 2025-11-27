@@ -46,7 +46,7 @@ public class Main {
         rwGraph.addEdge("B", "C");
         rwGraph.addEdge("C", "D");
 
-        //run random walk several times
+        //run random walk several times to test
         for (int i = 1; i <= 5; i++) {
             System.out.println("Random Walk attempt #" + i);
             Path p = rwGraph.GraphSearch("A", "C", Algorithm.RANDOM);
