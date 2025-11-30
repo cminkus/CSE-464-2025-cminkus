@@ -117,8 +117,41 @@ BUILD SUCCESS
 Screenshot showing BUILD SUCCESS after running mvn package:
 <img width="859" height="227" alt="image" src="https://github.com/user-attachments/assets/faa2a32c-282d-4b82-9559-2b4b35e15f24" />
 ------------------------------------------------------------------------------------------------------------------------------
+**CSE 464 – Project Part 2**
+
 Continuous Integration (CI):
 
 [![Maven CI](https://github.com/cminkus/CSE-464-2025-cminkus/actions/workflows/maven.yml/badge.svg)](https://github.com/cminkus/CSE-464-2025-cminkus/actions/workflows/maven.yml)
+------------------------------------------------------------------------------------------------------------------------------
+Branch List:
+<img width="765" height="121" alt="image" src="https://github.com/user-attachments/assets/b58531bb-ae21-4a4b-bb15-92db03c092c1" />
 
+------------------------------------------------------------------------------------------------------------------------------
+Links to Commits
+-Remove APIs and Tests: https://github.com/cminkus/CSE-464-2025-cminkus/commit/a7908b2e114dc0d40618c380a9db1b2ba833d105
+-Continuous Integration: https://github.com/cminkus/CSE-464-2025-cminkus/commit/120e294e7c46bb72a7e9b893cd3e26ff5a30e915
+-BFS Branch and GraphService with Test: https://github.com/cminkus/CSE-464-2025-cminkus/commit/a65217cfd6e5757c33537ed46509b13e696b1a99
+-DFS Branch and GraphService with Test: https://github.com/cminkus/CSE-464-2025-cminkus/commit/b34b9217b8673f144c45cd928014767cd522de7a
+-Merge BFS into Main: https://github.com/cminkus/CSE-464-2025-cminkus/commit/a65217cfd6e5757c33537ed46509b13e696b1a99 (Note that this says "added bfs tests," it should mention the merge happening)
+-Merge DFS into Main with Algorithm enum/parameter: https://github.com/cminkus/CSE-464-2025-cminkus/commit/8c1a459e48d4265ecc13ee371c0d92bf3c8cff45
+-Final code: https://github.com/cminkus/CSE-464-2025-cminkus/commit/3ebb47f38cff1f55514602690a5b2cdbba8b831d
+-Actions Page with CI: https://github.com/cminkus/CSE-464-2025-cminkus/actions
+------------------------------------------------------------------------------------------------------------------------------
+Screenshots:
+Feature 5 (Removing Nodes/Edges) Expected Output: 
+<img width="1331" height="801" alt="image" src="https://github.com/user-attachments/assets/6ec6ad75-d55d-437e-83c8-0629556db50e" />
+<img width="473" height="245" alt="image" src="https://github.com/user-attachments/assets/e3659db9-ed63-4d8a-b6a5-594c18ce5867" />
 
+Feature 6 (BFS) Expected Output: <img width="784" height="424" alt="image" src="https://github.com/user-attachments/assets/b33ac7d3-05c2-444f-b0f9-7ea27ebdc42d" />
+
+Feature 7 (DFS) Expected Output: <img width="883" height="275" alt="image" src="https://github.com/user-attachments/assets/782ff71f-6295-4295-86b0-5af3290fafdb" />
+
+All Tests Pass running mvn package: <img width="1503" height="388" alt="image" src="https://github.com/user-attachments/assets/2bf1c748-ab7a-4347-8ff6-71bcb8c3a8a1" />
+
+Continuous Integration: <img width="1382" height="960" alt="image" src="https://github.com/user-attachments/assets/26eaa291-dcff-43d5-8ea8-0370c968cb1d" />
+
+Main Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/main
+
+BFS Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/bfs
+
+DFS Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/dfs
