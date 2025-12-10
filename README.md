@@ -155,3 +155,5 @@ Main Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/main
 BFS Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/bfs
 
 DFS Branch: https://github.com/cminkus/CSE-464-2025-cminkus/tree/dfs
+
+FOR PART 3 README: LOOK IN FINALREADMe.pdf
