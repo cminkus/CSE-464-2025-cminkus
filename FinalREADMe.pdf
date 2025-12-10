@@ -191,14 +191,4 @@ The program will automatically:
   Run 5 Random Walk searches from a to h
   Print all results in the console
 
-BFS Output:
-<img width="331" height="84" alt="image" src="https://github.com/user-attachments/assets/3d25a6eb-a997-44a4-8ef9-9c4cbed23832" />
-
-DFS Output:
-<img width="315" height="89" alt="image" src="https://github.com/user-attachments/assets/1bc90b74-f7c0-4a9b-945b-bc63db06ae7e" />
-
-Random Walk Output (Should run 5 times): 
-<img width="856" height="357" alt="image" src="https://github.com/user-attachments/assets/bf6da7b0-be5d-4264-940f-0ab90e23e551" />
-<img width="1783" height="892" alt="image" src="https://github.com/user-attachments/assets/f97f37f4-d31b-4229-8848-881cdf0ba5d3" />
-<img width="820" height="544" alt="image" src="https://github.com/user-attachments/assets/05df7f79-5c4b-42a9-85bd-bb118dfec03c" />
 
